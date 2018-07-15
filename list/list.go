@@ -18,6 +18,22 @@ func (n *Node) Prev() *Node {
 	return n.prev
 }
 
+type List struct {
+	head *Node
+	back *Node
+	size int
+}
+
+// Init list
+func New() *List {
+	return new(List)
+}
+
+// Return int, number of elements existing on list
+func (l *List) Len() int {
+	return l.size
+}
+
 // Remove node form list
 func (l *List) Remove(n *Node) {
 
@@ -40,7 +56,7 @@ func (l *List) Remove(n *Node) {
 		return
 	}
 
-	// on middl
+	// on middle
 	n.prev.next = n.next
 	n.next.prev = n.prev
 	n.next = nil
@@ -49,37 +65,10 @@ func (l *List) Remove(n *Node) {
 	l.size--
 }
 
-type List struct {
-	head *Node
-	back *Node
-	size int
-}
-
-// Init list
-func New() *List {
-	return new(List)
-}
-
-// Return int, number of elements existing on list
-func (l *List) Len() int {
-	return l.size
-}
-
-// Add new node at the end of list
-// return reference for new added node
-func (l *List) PushBack(v interface{}) *Node {
-	n := &Node{nil, nil, v}
-	l.size++
-	if l.head == nil {
-		l.head = n
-		l.back = n
-		return n
-	}
-	n.prev = l.back
-	l.back.next = n
-	l.back = n
-
-	return n
+// Return reference for first node of list
+// nil if list is empty
+func (l *List) Front() *Node {
+	return l.head
 }
 
 // Add new node on front of list
@@ -102,8 +91,19 @@ func (l *List) Back() *Node {
 	return l.back
 }
 
-// Return reference for first node of list
-// nil if list is empty
-func (l *List) Front() *Node {
-	return l.head
+// Add new node at the end of list
+// return reference for new added node
+func (l *List) PushBack(v interface{}) *Node {
+	n := &Node{nil, nil, v}
+	l.size++
+	if l.head == nil {
+		l.head = n
+		l.back = n
+		return n
+	}
+	n.prev = l.back
+	l.back.next = n
+	l.back = n
+
+	return n
 }
