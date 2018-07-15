@@ -1,5 +1,10 @@
 package list
 
+/*
+list package provide implementation for double liked list
+*/
+
+// Node ...
 type Node struct {
 	next  *Node
 	prev  *Node
@@ -22,11 +27,6 @@ type List struct {
 	head *Node
 	back *Node
 	size int
-}
-
-// Init list
-func New() *List {
-	return new(List)
 }
 
 // Return int, number of elements existing on list
@@ -65,14 +65,14 @@ func (l *List) Remove(n *Node) {
 	l.size--
 }
 
-// Return reference for first node of list
+// Front reference for first node of list
 // nil if list is empty
 func (l *List) Front() *Node {
 	return l.head
 }
 
 // Add new node on front of list
-// return reference for new added node
+// Return reference for new added node
 func (l *List) PushFront(v interface{}) *Node {
 	n := &Node{nil, nil, v}
 	l.size++

@@ -4,7 +4,7 @@ Golang implementation for a double linked list.
 #### Usage
     
 - Init list `{ nil }`  
-    `l:= list.New()`
+    `l:= &list.List{}`
 
 - Add a value `{ 1 }`  
     `_ = l.PushBack(1)`
