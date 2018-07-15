@@ -1,4 +1,7 @@
-# Usage
+# LikedList data structure
+Golang implementation for a double linked list.
+
+#### Usage
     
 - Init list `{ nil }`  
     `l:= list.New()`
@@ -24,7 +27,7 @@
 - Remove the last node `{ 1 }`  
     `l.Remove(lastNode)`
     
-# TODO
+#### TODO
 - Add Tests
 - Add Benchmarks 
 - Add GoDoc
