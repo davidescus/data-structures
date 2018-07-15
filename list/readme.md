@@ -23,3 +23,16 @@
 
 - Remove the last node `{ 1 }`  
     `l.Remove(lastNode)`
+    
+# TODO
+- Add Tests
+- Add Benchmarks 
+- Add GoDoc
+    - Add new features
+    - InsertAfter(n, afterNode *Node)  
+    - InsertBefore(n, beforeNode *Node)
+    - MoveToBack(n *Node)
+    - MoveToFront(n *Node)
+    - MoveAfter(n, afterNode *Node)
+    - MoveBefore(n, beforeNode *Node)
+          
