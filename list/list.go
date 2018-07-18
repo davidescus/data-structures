@@ -4,28 +4,28 @@ package list
 list package provide implementation for double liked list
 */
 
-// Node ...
-type Node struct {
-	next  *Node
-	prev  *Node
+// node ...
+type node struct {
+	next  *node
+	prev  *node
 	Value interface{}
 }
 
 // Return reference for the next node
 // nil if not exists (list is empty or it is the last node in list)
-func (n *Node) Next() *Node {
+func (n *node) Next() *node {
 	return n.next
 }
 
 // Return reference for the previous node
 // nil if not exists (list is empty or it is the first node in list)
-func (n *Node) Prev() *Node {
+func (n *node) Prev() *node {
 	return n.prev
 }
 
 type List struct {
-	head *Node
-	back *Node
+	head *node
+	back *node
 	size int
 }
 
@@ -35,7 +35,7 @@ func (l *List) Len() int {
 }
 
 // Remove node form list
-func (l *List) Remove(n *Node) {
+func (l *List) Remove(n *node) {
 
 	if l.Len() < 1 || n == nil {
 		return
@@ -44,9 +44,8 @@ func (l *List) Remove(n *Node) {
 	// it is the first on list
 	if n.prev == nil {
 		n.next.prev = nil
-		next := n.next
+		l.head = n.next
 		n.next = nil
-		l.head = next
 		return
 	}
 
@@ -67,14 +66,14 @@ func (l *List) Remove(n *Node) {
 
 // Front reference for first node of list
 // nil if list is empty
-func (l *List) Front() *Node {
+func (l *List) Front() *node {
 	return l.head
 }
 
 // Add new node on front of list
 // Return reference for new added node
-func (l *List) PushFront(v interface{}) *Node {
-	n := &Node{nil, nil, v}
+func (l *List) PushFront(v interface{}) *node {
+	n := &node{nil, nil, v}
 	l.size++
 	if l.head != nil {
 		n.next = l.head
@@ -87,14 +86,14 @@ func (l *List) PushFront(v interface{}) *Node {
 
 // Return reference for last node of list
 // nil if list is empty
-func (l *List) Back() *Node {
+func (l *List) Back() *node {
 	return l.back
 }
 
 // Add new node at the end of list
 // return reference for new added node
-func (l *List) PushBack(v interface{}) *Node {
-	n := &Node{nil, nil, v}
+func (l *List) PushBack(v interface{}) *node {
+	n := &node{nil, nil, v}
 	l.size++
 	if l.head == nil {
 		l.head = n
