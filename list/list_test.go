@@ -26,7 +26,7 @@ func TestRemoveFront(t *testing.T) {
 	l.Remove(n)
 
 	got, err := compare(l, exp)
-	if err == true {
+	if err {
 		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
 	}
 }
@@ -43,7 +43,7 @@ func TestRemoveMiddle(t *testing.T) {
 	l.Remove(n2)
 
 	got, err := compare(l, exp)
-	if err == true {
+	if err {
 		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
 	}
 }
@@ -58,7 +58,7 @@ func TestRemoveAllOneElement(t *testing.T) {
 	l.Remove(n1)
 
 	got, err := compare(l, exp)
-	if err == true {
+	if err {
 		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
 	}
 }
@@ -77,7 +77,7 @@ func TestRemoveAllOneManyElements(t *testing.T) {
 	l.Remove(n3)
 
 	got, err := compare(l, exp)
-	if err == true {
+	if err {
 		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
 	}
 }
@@ -100,7 +100,7 @@ func TestRemoveAllAndRepopulate(t *testing.T) {
 	l.PushBack(6)
 
 	got, err := compare(l, exp)
-	if err == true {
+	if err {
 		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
 	}
 }
@@ -117,7 +117,7 @@ func TestRemoveBack(t *testing.T) {
 	l.Remove(n)
 
 	got, err := compare(l, exp)
-	if err == true {
+	if err {
 		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
 	}
 }
@@ -132,7 +132,7 @@ func TestPushFront(t *testing.T) {
 	_ = l.PushFront(3)
 
 	got, err := compare(l, exp)
-	if err == true {
+	if err {
 		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
 	}
 }
@@ -147,7 +147,7 @@ func TestPushBack(t *testing.T) {
 	_ = l.PushBack(3)
 
 	got, err := compare(l, exp)
-	if err == true {
+	if err {
 		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
 	}
 }
@@ -163,7 +163,7 @@ func TestPushFrontBack(t *testing.T) {
 	_ = l.PushFront(4)
 
 	got, err := compare(l, exp)
-	if err == true {
+	if err {
 		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
 	}
 }
