@@ -4,38 +4,37 @@ package list
 list package provide implementation for double liked list
 */
 
-// node ...
-type node struct {
-	next  *node
-	prev  *node
+// Node ...
+type Node struct {
+	next  *Node
+	prev  *Node
 	Value interface{}
 }
 
-// Return reference for the next node
-// nil if not exists (list is empty or it is the last node in list)
-func (n *node) Next() *node {
+// Next move to next node if exists
+func (n *Node) Next() *Node {
 	return n.next
 }
 
-// Return reference for the previous node
-// nil if not exists (list is empty or it is the first node in list)
-func (n *node) Prev() *node {
+// Prev move to previous node
+func (n *Node) Prev() *Node {
 	return n.prev
 }
 
+// List is the basic structure that keep the current state
 type List struct {
-	head *node
-	back *node
+	head *Node
+	back *Node
 	size int
 }
 
-// Return int, number of elements existing on list
+// Len is used to get current size of list
 func (l *List) Len() int {
 	return l.size
 }
 
-// Remove node form list
-func (l *List) Remove(n *node) {
+// Remove first, last, middle Node
+func (l *List) Remove(n *Node) {
 
 	if l.Len() < 1 || n == nil {
 		return
@@ -43,7 +42,9 @@ func (l *List) Remove(n *node) {
 
 	// it is the first on list
 	if n.prev == nil {
-		n.next.prev = nil
+		if n.next != nil {
+			n.next.prev = nil
+		}
 		l.head = n.next
 		n.next = nil
 		return
@@ -64,16 +65,15 @@ func (l *List) Remove(n *node) {
 	l.size--
 }
 
-// Front reference for first node of list
+// Front reference for first Node of list
 // nil if list is empty
-func (l *List) Front() *node {
+func (l *List) Front() *Node {
 	return l.head
 }
 
-// Add new node on front of list
-// Return reference for new added node
-func (l *List) PushFront(v interface{}) *node {
-	n := &node{nil, nil, v}
+// PushFront create new node in front of list
+func (l *List) PushFront(v interface{}) *Node {
+	n := &Node{nil, nil, v}
 	l.size++
 	if l.head != nil {
 		n.next = l.head
@@ -84,16 +84,14 @@ func (l *List) PushFront(v interface{}) *node {
 	return n
 }
 
-// Return reference for last node of list
-// nil if list is empty
-func (l *List) Back() *node {
+// Back get the last node if exists
+func (l *List) Back() *Node {
 	return l.back
 }
 
-// Add new node at the end of list
-// return reference for new added node
-func (l *List) PushBack(v interface{}) *node {
-	n := &node{nil, nil, v}
+// PushBack add node at the end of list
+func (l *List) PushBack(v interface{}) *Node {
+	n := &Node{nil, nil, v}
 	l.size++
 	if l.head == nil {
 		l.head = n
