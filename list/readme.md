@@ -28,7 +28,6 @@ Golang implementation for a double linked list.
     `l.Remove(lastNode)`
     
 #### TODO
-- Add Tests
 - Add Benchmarks 
 - Add GoDoc
 - Add new features
