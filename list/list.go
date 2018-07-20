@@ -1,10 +1,7 @@
+// Package list provide implementation for a double linked list
 package list
 
-/*
-list package provide implementation for double liked list
-*/
-
-// Node ...
+// Node is the structure that hold's tht value
 type Node struct {
 	next  *Node
 	prev  *Node
