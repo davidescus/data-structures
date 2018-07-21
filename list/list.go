@@ -101,3 +101,28 @@ func (l *List) PushBack(v interface{}) *Node {
 
 	return n
 }
+
+// InsertAfter add new node after specified node
+func (l *List) InsertAfter(v interface{}, leftNode *Node) *Node {
+	n := &Node{nil, nil, v}
+	nextLeftNode := leftNode.next
+	leftNode.next = n
+	n.next = nextLeftNode
+	return n
+}
+
+// InsertAfter add new node before specified node
+func (l *List) InsertBefore(v interface{}, rightNode *Node) *Node {
+	n := &Node{nil, nil, v}
+
+	if n.prev == nil {
+		return l.PushFront(v)
+	}
+
+	leftNode := rightNode.prev
+	leftNode.next = n
+	n.prev = leftNode
+	rightNode.prev = n
+	n.next = rightNode
+	return n
+}

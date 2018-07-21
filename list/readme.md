@@ -31,8 +31,8 @@ Golang implementation for a double linked list.
 - Add Benchmarks 
 - Add GoDoc
 - Add new features
-    - InsertAfter(n, afterNode *Node)  
-    - InsertBefore(n, beforeNode *Node)
+    - InsertAfter(v interface{}, afterNode *Node) *Node 
+    - InsertBefore(v interface{}, beforeNode *Node) *Node
     - MoveToBack(n *Node)
     - MoveToFront(n *Node)
     - MoveAfter(n, afterNode *Node)

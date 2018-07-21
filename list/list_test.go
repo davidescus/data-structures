@@ -168,6 +168,70 @@ func TestPushFrontBack(t *testing.T) {
 	}
 }
 
+func TestInsertAfter(t *testing.T) {
+	name := "Test InsertAfter"
+	exp := []int{1, 3, 2}
+
+	l := &List{}
+	n1 := l.PushBack(1)
+	_ = l.PushBack(2)
+
+	_ = l.InsertAfter(3, n1)
+
+	got, err := compare(l, exp)
+	if err {
+		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
+	}
+}
+
+func TestInsertAfterLastElement(t *testing.T) {
+	name := "Test InsertAfterLastElement"
+	exp := []int{1, 2, 4}
+
+	l := &List{}
+	_ = l.PushBack(1)
+	n2 := l.PushBack(2)
+
+	_ = l.InsertAfter(4, n2)
+
+	got, err := compare(l, exp)
+	if err {
+		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
+	}
+}
+
+func TestInsertBefore(t *testing.T) {
+	name := "Test InsertBefore"
+	exp := []int{1, 3, 2}
+
+	l := &List{}
+	_ = l.PushBack(1)
+	n2 := l.PushBack(2)
+
+	_ = l.InsertBefore(3, n2)
+
+	got, err := compare(l, exp)
+	if err {
+		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
+	}
+}
+
+func TestInsertBeforeFirstElement(t *testing.T) {
+	name := "Test InsertBeforeFirstElement"
+	exp := []int{4, 1, 2}
+
+	l := &List{}
+	n1 := l.PushBack(1)
+	_ = l.PushBack(2)
+
+	_ = l.InsertBefore(4, n1)
+
+	got, err := compare(l, exp)
+	if err {
+		t.Errorf("%s\nExp: %v\nGot: %v\n", name, exp, got)
+	}
+}
+
 func compare(l *List, exp []int) ([]int, bool) {
 	var got []int
 	var err bool
